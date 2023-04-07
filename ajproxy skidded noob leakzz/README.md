@@ -1,6 +1,11 @@
 # Growtopia skidder proxy (added more features and got alot help from finhek (me) and vaccat lol and this kid didnt even give credits )
 ## finhek's beatiful discord server dsc.gg/projectnight
 
+this source code is owned by joakimmer1k0 (his real name is Joel Ahonen and he's 13 years old children) and this source contains skidded stuff lol
+join on my discord server: dsc.gg/projectnight
+
+so if ur gonna skid this lol watch me leak it too
+
 ## Features
 * /proxy (Shows proxy commands)
 * /dropwl [amount]
