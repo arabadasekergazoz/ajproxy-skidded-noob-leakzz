@@ -1,5 +1,5 @@
-# Growtopia enet proxy (added more features)
-## OpenSSL Download https://slproweb.com/download/Win64OpenSSL-3_0_5.exe
+# Growtopia skidder proxy (added more features and got alot help from finhek (me) and vaccat lol and this kid didnt even give credits )
+## finhek's beatiful discord server dsc.gg/projectnight
 
 ## Features
 * /proxy (Shows proxy commands)
@@ -22,6 +22,6 @@
 * /banall (Ban All Player In Same World)
 * /tradeall (Trade All Player In Same World)
 
-# By Joakim(https://github.com/JoakimTheCoder)
+# Skidder proxy owner is Joel ahonen and he's 13 years old retard kid (https://github.com/AcidDeveloper)
 
 
