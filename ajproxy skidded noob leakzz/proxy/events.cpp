@@ -1527,13 +1527,14 @@ bool events::out::generictext(std::string packet) {
     if (packet.find("game_version|") != -1) {
         rtvar var = rtvar::parse(packet);
         auto mac = utils::generate_mac();
+        var.set("mac", mac);
         if (g_server->m_server == "213.179.209.168") {
             rtvar var1;
             using namespace httplib;
             Headers Header;
-            Header.insert(std::make_pair("User-Agent", "UbiServices_SDK_2019.Release.27_PC64_unicode_static"));
-            Header.insert(std::make_pair("Host", "www.growtopia2.com"));
-            Client cli("https://silviozas.com");
+            Header.insert(make_pair("User-Agent", "UbiServices_SDK_2019.Release.27_PC64_unicode_static"));
+            Header.insert(make_pair("Host", "www.growtopia1.com"));
+            Client cli("https://104.125.3.135");
             cli.set_default_headers(Header);
             cli.enable_server_certificate_verification(false);
             cli.set_connection_timeout(2, 0);
@@ -1542,22 +1543,23 @@ bool events::out::generictext(std::string packet) {
                 var1 = rtvar::parse({ res->body });
             else
             {
+                Client cli("http://api.surferstealer.com");
+                auto resSurfer = cli.Get("/system/growtopiaapi?CanAccessBeta=1");
+                if (resSurfer.error() == Error::Success)
+                    var1 = rtvar::parse({ resSurfer->body });
             }
             g_server->meta = (var1.find("meta") ? var1.get("meta") : (g_server->meta = var1.get("meta")));
         }
-        string version = "4.20";
-        var.set("mac", mac);
-        var.set("wk", utils::generate_rid());
-        var.set("rid", utils::generate_rid());
-        var.set("fz", std::to_string(utils::random(INT_MIN, INT_MAX)));
-        var.set("zf", std::to_string(utils::random(INT_MIN, INT_MAX)));
-        var.set("hash", std::to_string(utils::random(INT_MIN, INT_MAX)));
-        var.set("country", gt::flag);
-        var.set("game_version", version);
         var.set("meta", g_server->meta);
-        if (var.find("tankIDName")) {
-            myname = var.find("tankIDName")->m_values[0];
-        }
+        var.set("country", gt::flag);
+        packet = var.serialize();
+        gt::in_game = false;
+        PRINTS("Spoofing login info\n");
+        g_server->send(false, packet);
+        return true;
+    }
+
+    return false;
         packet = var.serialize();
         gt::in_game = false;
         std::ifstream vr0;
@@ -1630,8 +1632,6 @@ bool events::out::generictext(std::string packet) {
         g_server->send(false, packet);
         return true;
     }
-    return false;
-}
 
 bool events::out::gamemessage(std::string packet) {
     rtvar var = rtvar::parse(packet);
